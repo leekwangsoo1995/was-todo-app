@@ -1,0 +1,5 @@
+  1. ビルド: mvn clean package → target/was-todo-app.war
+  2. データソース作成 (WAS管理コンソール):
+    - JDBC Provider: Derby Embedded or 任意のDB
+    - JNDI名: jdbc/todoDB
+  3. WARをデプロイ → EclipseLink が TODOS テーブルを自動作成

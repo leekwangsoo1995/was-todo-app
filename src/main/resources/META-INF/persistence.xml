@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1"
+             xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+             http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+
+    <persistence-unit name="todoPU" transaction-type="JTA">
+        <!--
+            WAS管理コンソールで以下のJNDI名でデータソースを作成してください:
+              JNDI名: jdbc/todoDB
+              データベース: Apache Derby (WAS組み込み) または任意のDB
+        -->
+        <jta-data-source>jdbc/todoDB</jta-data-source>
+
+        <class>com.example.todo.infrastructure.persistence.entity.TodoJpaEntity</class>
+
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+
+        <properties>
+            <!-- EclipseLink (WAS 9.0 標準JPAプロバイダー) -->
+            <!-- テーブルが存在しない場合は自動作成 -->
+            <property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>
+            <property name="eclipselink.ddl-generation.output-mode" value="database"/>
+            <property name="eclipselink.logging.level" value="WARNING"/>
+            <property name="eclipselink.logging.level.sql" value="FINE"/>
+        </properties>
+    </persistence-unit>
+</persistence>

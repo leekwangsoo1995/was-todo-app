@@ -1,0 +1,23 @@
+package com.example.todo.presentation.rest;
+
+import com.example.todo.domain.exception.TodoNotFoundException;
+
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.ext.ExceptionMapper;
+import javax.ws.rs.ext.Provider;
+import java.util.Collections;
+import java.util.Map;
+
+@Provider
+public class TodoNotFoundExceptionMapper implements ExceptionMapper<TodoNotFoundException> {
+
+    @Override
+    public Response toResponse(TodoNotFoundException exception) {
+        Map<String, String> body = Collections.singletonMap("message", exception.getMessage());
+        return Response.status(Response.Status.NOT_FOUND)
+                .type(MediaType.APPLICATION_JSON)
+                .entity(body)
+                .build();
+    }
+}
