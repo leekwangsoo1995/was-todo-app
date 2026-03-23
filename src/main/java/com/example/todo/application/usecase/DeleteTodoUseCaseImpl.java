@@ -15,9 +15,14 @@ public class DeleteTodoUseCaseImpl implements DeleteTodoUseCase {
 
     @Override
     public void execute(Long id) {
-        if (!todoRepository.existsById(id)) {
-            throw new TodoNotFoundException(id);
+        try {
+            if (!todoRepository.existsById(id)) {
+                throw new TodoNotFoundException(id);
+            }
+            todoRepository.deleteById(id);
+        } catch (TodoNotFoundException e) {
+            // 削除対象が存在しない場合はログ出力のみ
+            System.out.println("削除対象のTodoが見つかりません: id=" + id);
         }
-        todoRepository.deleteById(id);
     }
 }

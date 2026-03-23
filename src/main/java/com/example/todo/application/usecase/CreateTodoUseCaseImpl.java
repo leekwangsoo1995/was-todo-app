@@ -18,7 +18,7 @@ public class CreateTodoUseCaseImpl implements CreateTodoUseCase {
     @Override
     public TodoResponse execute(CreateTodoRequest request) {
         Todo todo = new Todo(request.getTitle(), request.getDescription());
-        Todo saved = todoRepository.save(todo);
-        return TodoResponse.from(saved);
+        Todo entity = todoRepository.save(todo);
+        return TodoResponse.from(entity);
     }
 }

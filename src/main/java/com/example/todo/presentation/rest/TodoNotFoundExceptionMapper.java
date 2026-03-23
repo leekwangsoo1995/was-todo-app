@@ -15,7 +15,7 @@ public class TodoNotFoundExceptionMapper implements ExceptionMapper<TodoNotFound
     @Override
     public Response toResponse(TodoNotFoundException exception) {
         Map<String, String> body = Collections.singletonMap("message", exception.getMessage());
-        return Response.status(Response.Status.NOT_FOUND)
+        return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
                 .type(MediaType.APPLICATION_JSON)
                 .entity(body)
                 .build();

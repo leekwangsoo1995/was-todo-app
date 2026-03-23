@@ -9,6 +9,10 @@ import com.example.todo.domain.usecase.ToggleTodoUseCase;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
+/**
+ * 指定したTodoを完了状態にする。
+ * 既に完了している場合も完了状態のまま維持する。
+ */
 @Stateless
 public class ToggleTodoUseCaseImpl implements ToggleTodoUseCase {
 

@@ -23,7 +23,8 @@ public class TodoRepositoryImpl implements TodoRepository {
     @Override
     public Todo save(Todo todo) {
         TodoJpaEntity entity = TodoJpaEntity.fromDomain(todo);
-        if (entity.getId() == null) {
+        // idがnullでない場合は新規保存、nullの場合は更新
+        if (entity.getId() != null) {
             em.persist(entity);
             em.flush();
         } else {

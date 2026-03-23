@@ -17,9 +17,10 @@ public class GetTodosUseCaseImpl implements GetTodosUseCase {
 
     @Override
     public List<TodoResponse> execute() {
-        return todoRepository.findAll()
+        List<TodoResponse> data = todoRepository.findAll()
                 .stream()
                 .map(TodoResponse::from)
                 .collect(Collectors.toList());
+        return data;
     }
 }
