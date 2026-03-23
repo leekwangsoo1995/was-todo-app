@@ -9,6 +9,7 @@ import com.example.todo.domain.usecase.ToggleTodoUseCase;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
+// [NGポイント] コメントと実装が不一致。実際は完了/未完了をトグルするが、コメントは「完了にするだけ」と誤解させる
 /**
  * 指定したTodoを完了状態にする。
  * 既に完了している場合も完了状態のまま維持する。

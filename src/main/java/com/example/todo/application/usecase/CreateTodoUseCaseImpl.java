@@ -18,6 +18,7 @@ public class CreateTodoUseCaseImpl implements CreateTodoUseCase {
     @Override
     public TodoResponse execute(CreateTodoRequest request) {
         Todo todo = new Todo(request.getTitle(), request.getDescription());
+        // [NGポイント] ドメインオブジェクト(Todo)の変数名に「entity」を使うとJPAエンティティ(TodoJpaEntity)と混同しやすい
         Todo entity = todoRepository.save(todo);
         return TodoResponse.from(entity);
     }

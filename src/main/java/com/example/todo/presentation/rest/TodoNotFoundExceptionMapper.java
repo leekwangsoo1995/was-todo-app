@@ -15,6 +15,7 @@ public class TodoNotFoundExceptionMapper implements ExceptionMapper<TodoNotFound
     @Override
     public Response toResponse(TodoNotFoundException exception) {
         Map<String, String> body = Collections.singletonMap("message", exception.getMessage());
+        // [NGポイント] リソースが見つからない場合は404 NOT_FOUNDを返すべき。500はサーバー内部エラー用
         return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
                 .type(MediaType.APPLICATION_JSON)
                 .entity(body)

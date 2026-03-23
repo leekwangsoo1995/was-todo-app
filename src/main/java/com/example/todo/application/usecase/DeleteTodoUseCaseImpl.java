@@ -21,6 +21,7 @@ public class DeleteTodoUseCaseImpl implements DeleteTodoUseCase {
             }
             todoRepository.deleteById(id);
         } catch (TodoNotFoundException e) {
+            // [NGポイント] 例外を握りつぶしている。呼び出し元に伝播させないと404が返らず、削除成功と区別できない
             // 削除対象が存在しない場合はログ出力のみ
             System.out.println("削除対象のTodoが見つかりません: id=" + id);
         }

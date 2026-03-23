@@ -17,6 +17,7 @@ public class GetTodosUseCaseImpl implements GetTodosUseCase {
 
     @Override
     public List<TodoResponse> execute() {
+        // [NGポイント] 変数名「data」では何のデータか不明。「todoResponses」など具体的な名前にすべき
         List<TodoResponse> data = todoRepository.findAll()
                 .stream()
                 .map(TodoResponse::from)

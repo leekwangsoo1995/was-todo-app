@@ -23,6 +23,7 @@ public class TodoRepositoryImpl implements TodoRepository {
     @Override
     public Todo save(Todo todo) {
         TodoJpaEntity entity = TodoJpaEntity.fromDomain(todo);
+        // [NGポイント] コメントと実装が逆。正しくは「idがnullの場合は新規保存(persist)、nullでない場合は更新(merge)」
         // idがnullでない場合は新規保存、nullの場合は更新
         if (entity.getId() != null) {
             em.persist(entity);
